@@ -1,16 +1,17 @@
 import { Dependencies } from './ar-data-base';
 
 import { getSignatureData, DataItemJson } from './ar-data-base';
-import { create, sign, DataItemCreateOptions } from './ar-data-create';
+import { createData, sign, addTag, DataItemCreateOptions } from './ar-data-create';
 import { decodeData, decodeTag, decodeTagAt, unpackTags } from './ar-data-read';
 import { verify  } from './ar-data-verify';
 
-export { create, sign, decodeData, decodeTag, decodeTagAt, unpackTags, verify, DataItemCreateOptions, DataItemJson, getSignatureData }
+export { createData as create, sign, decodeData, decodeTag, decodeTagAt, unpackTags, verify, DataItemCreateOptions, DataItemJson, getSignatureData }
 
 export function ArDataApi(deps: Dependencies) {
   return {
-    create: create.bind(null, deps),
+    createData: createData.bind(null, deps),
     sign: sign.bind(null, deps),
+    addTag: addTag.bind(null, deps),
     verify: verify.bind(null, deps),
     decodeData: decodeData.bind(null, deps),
     decodeTag: decodeTag.bind(null, deps),

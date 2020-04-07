@@ -30,7 +30,7 @@ const Data = ArDataApi(deps);
 
 describe('Data API - basic', function() {
   it('should encode and decode string data', async function() {
-    const item = await Data.create({ data: TEST_STRING }, wallet0);
+    const item = await Data.createData({ data: TEST_STRING }, wallet0);
     expect(item.data).to.not.equal(TEST_STRING);
     expect(await Data.decodeData(item, { string: true })).to.equal(TEST_STRING)
   })
@@ -40,7 +40,7 @@ describe('Data API - verification', function() {
   
   it('should verify a valid signed DataItem', async function() {
     
-    const item0 = await Data.create({ data: TEST_STRING, tags: TEST_TAGS }, wallet0);
+    const item0 = await Data.createData({ data: TEST_STRING, tags: TEST_TAGS }, wallet0);
     const signed = await Data.sign(item0, wallet0);
     const verified = await Data.verify(signed);
     
@@ -49,7 +49,7 @@ describe('Data API - verification', function() {
 
   
   it('should fail to verify a DataItem with no signature or id', async function() {
-    const item0 = await Data.create({ data: 'TESTSTRINGA'}, wallet0);
+    const item0 = await Data.createData({ data: 'TESTSTRINGA'}, wallet0);
     
     expect(
       await Data.verify(item0)
@@ -71,7 +71,7 @@ describe('Data API - verification', function() {
   })
 
   it('should fail to verify a DataItem with a invalid owner', async function() {
-    const item0 = await Data.create({ data: 'TESTSTRINGA'}, wallet0);
+    const item0 = await Data.createData({ data: 'TESTSTRINGA'}, wallet0);
     
     
     const signed = await Data.sign(item0, wallet0);
@@ -90,7 +90,7 @@ describe('Data API - verification', function() {
 
   it('should fail to verify a DataItem with a modified or invalid id or signature', async function() {
     
-    const item0 = await Data.create({ data: 'TESTSTRINGA' }, wallet0);
+    const item0 = await Data.createData({ data: 'TESTSTRINGA' }, wallet0);
     
     const signed = await Data.sign(item0, wallet0);
     
@@ -151,7 +151,7 @@ describe('Data API - verification', function() {
   })
 
   it('should fail to verify a DataItem with a modified nonce', async function() {
-    const item0 = await Data.create({ data: 'TESTSTRINGA', nonce: VALID_BASE64U }, wallet0);
+    const item0 = await Data.createData({ data: 'TESTSTRINGA', nonce: VALID_BASE64U }, wallet0);
     const signed = await Data.sign(item0, wallet0);
     signed.nonce = signed.nonce + VALID_BASE64U;
     expect(
@@ -160,7 +160,7 @@ describe('Data API - verification', function() {
   })
 
   it('should fail to verify a DataItem with invalid Base64', async function() {
-    const item0 = await Data.create({ data: 'TESTSTRINGA', nonce: VALID_BASE64U }, wallet0);
+    const item0 = await Data.createData({ data: 'TESTSTRINGA', nonce: VALID_BASE64U }, wallet0);
     const signed = await Data.sign(item0, wallet0);
     signed.data = INVALID_BASE64U
     expect(
@@ -169,7 +169,7 @@ describe('Data API - verification', function() {
   })
 
   it('should fail to verify a DataItem with modified tags', async function() {
-    const item0 = await Data.create({ data: 'TESTSTRINGA', tags: TEST_TAGS, nonce: VALID_BASE64U }, wallet0);
+    const item0 = await Data.createData({ data: 'TESTSTRINGA', tags: TEST_TAGS, nonce: VALID_BASE64U }, wallet0);
     const signed = await Data.sign(item0, wallet0);
     expect(
       await Data.verify(signed)
@@ -183,7 +183,7 @@ describe('Data API - verification', function() {
   })
 
   it('should fail to verify a DataItem with invalid tags', async function() {
-    const item0 = await Data.create({ data: 'TESTSTRINGA', tags: TEST_TAGS, nonce: VALID_BASE64U }, wallet0);
+    const item0 = await Data.createData({ data: 'TESTSTRINGA', tags: TEST_TAGS, nonce: VALID_BASE64U }, wallet0);
     const signed = await Data.sign(item0, wallet0);
     
     signed.tags[0].name = INVALID_BASE64U;

@@ -20,7 +20,7 @@ export interface DataItemCreateOptions {
  * @param opts 
  * @param jwk 
  */
-export async function create(deps: Dependencies, opts: DataItemCreateOptions, jwk: JWKPublicInterface): Promise<DataItemJson> {
+export async function createData(deps: Dependencies, opts: DataItemCreateOptions, jwk: JWKPublicInterface): Promise<DataItemJson> {
   
   const d = {
     owner: jwk.n,
@@ -41,6 +41,13 @@ export async function create(deps: Dependencies, opts: DataItemCreateOptions, jw
   }
 
   return d;
+}
+
+export function addTag(deps: Dependencies, d: DataItemJson, name: string, value: string) {
+  d.tags.push({
+    name: deps.utils.stringToB64Url(name), 
+    value: deps.utils.stringToB64Url(value)
+  })
 }
 
 /**
