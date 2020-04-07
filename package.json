@@ -4,7 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "ts-mocha src/tests/*.spec.ts"
+        "test": "ts-mocha src/tests/*.spec.ts",
+        "build": "npx @pika/pack"
     },
     "keywords": [],
     "author": "",
