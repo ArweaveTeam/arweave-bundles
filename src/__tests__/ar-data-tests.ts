@@ -1,5 +1,5 @@
 
-import { create, decodeData, ArDataApi  } from '../src'
+import { create, decodeData, ArDataApi  } from '../index'
 
 import Arweave from 'arweave/node/common';
 import deepHash from 'arweave/node/lib/deepHash';

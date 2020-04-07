@@ -24,7 +24,7 @@
     "@pika/pack": {
         "pipeline": [
             [
-                "@pika/plugin-ts-standard-pkg"
+                "@pika/plugin-ts-standard-pkg", { "tsconfig": "tsconfig.build.json" }
             ],
             [
                 "@pika/plugin-build-node"
