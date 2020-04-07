@@ -12,7 +12,7 @@ export const MAX_TAG_COUNT = 128;
  * @param d 
  * @param jwk 
  */
-export async function verify(deps: Dependencies, d: DataItemJson, jwk: JWKPublicInterface): Promise<boolean> {
+export async function verify(deps: Dependencies, d: DataItemJson): Promise<boolean> {
   
   // Try-catch all so malformed data like invalid base64 or something just returns false. 
 
@@ -31,7 +31,7 @@ export async function verify(deps: Dependencies, d: DataItemJson, jwk: JWKPublic
     }
 
     // Verify Signature is correct 
-    const signatureOk = await deps.crypto.verify(jwk.n, signatureData, signatureBytes);
+    const signatureOk = await deps.crypto.verify(d.owner, signatureData, signatureBytes);
 
     if (!signatureOk) {
       return false; 
