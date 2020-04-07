@@ -13,7 +13,6 @@ const _arweave = Arweave.init({ host: 'arweave.net', port: '443', protocol: 'htt
 
 const wallet0 = JSON.parse(readFileSync(__dirname + '/test_key0.json').toString());
 const wallet1 = JSON.parse(readFileSync(__dirname + '/test_key1.json').toString());
-const wallet2 = JSON.parse(readFileSync(__dirname + '/test_key2.json').toString());
 
 const TEST_STRING = 'HELLOWORLD_TEST_STRING'; 
 const TEST_TAGS = [ { name: 'MyTag', value: '0'}, {name: "OtherTag", value: "Foo" }, { name: "MyTag", value: '1' } ];
@@ -72,7 +71,6 @@ describe('Data API - verification', function() {
 
   it('should fail to verify a DataItem with a invalid owner', async function() {
     const item0 = await Data.createData({ data: 'TESTSTRINGA'}, wallet0);
-    
     
     const signed = await Data.sign(item0, wallet0);
     
