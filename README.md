@@ -27,7 +27,7 @@ async function makeSomeDataItems() {
     { name: 'App-Version', value: '1.0.0' }
   ]
 
-  let data = ArData.createData({ to: 'awalleet', data: 'somemessage', tags: myTags }, jwk);
+  let data = await ArData.createData({ to: 'awalleet', data: 'somemessage', tags: myTags }, jwk);
   
   // Add some more tags after creation.
   ArData.addTag(data, 'MyTag', 'value1')
