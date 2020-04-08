@@ -1,5 +1,4 @@
 import { Dependencies, DataItemJson, getSignatureData } from "./ar-data-base";
-import { JWKPublicInterface } from "./interface-jwk";
 
 export const MAX_TAG_KEY_LENGTH_BYTES = 512;
 export const MAX_TAG_VALUE_LENGTH_BYTES = 1024 * 2;
@@ -87,12 +86,12 @@ export function verifyEncodedTagSize(deps: Dependencies, tag: { name: string, va
 
   const nameLen = deps.utils.b64UrlToBuffer(tag.name).length;
   if (nameLen < 1 || nameLen > MAX_TAG_KEY_LENGTH_BYTES) {
-    return false; 
+    return false;
   }
 
   const valueLen = deps.utils.b64UrlToBuffer(tag.value).length;
   if (valueLen < 1 || nameLen > MAX_TAG_VALUE_LENGTH_BYTES) {
-    return false; 
+    return false;
   }
 
   return true;
