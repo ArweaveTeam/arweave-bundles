@@ -7,7 +7,7 @@ import { Dependencies, DataItemJson } from "./ar-data-base";
  * @param d 
  * @param param2 
  */
-export async function decodeData(deps: Dependencies, d: DataItemJson, options: { string: boolean} = { string: false }): Promise<string | Uint8Array> {
+export async function decodeData(deps: Dependencies, d: DataItemJson, options: { string: boolean } = { string: false }): Promise<string | Uint8Array> {
   if (options.string) {
     return deps.utils.b64UrlToString(d.data);
   } else {
@@ -27,7 +27,7 @@ export async function decodeTag(deps: Dependencies, tag: { name: string, value: 
 
 /**
  * Decodes an individual tag from a DataItem at index. Throws if index is out of bounds.
- *  
+ * 
  */
 export async function decodeTagAt(deps: Dependencies, d: DataItemJson, index: number) {
   if (d.tags.length < index-1) { 
