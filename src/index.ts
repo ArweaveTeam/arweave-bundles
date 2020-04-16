@@ -8,7 +8,7 @@ import { verify  } from './ar-data-verify';
 
 export { createData as create, sign, decodeData, decodeTag, decodeTagAt, unpackTags, verify, DataItemCreateOptions, DataItemJson, getSignatureData }
 
-export function ArDataApi(deps: Dependencies) {
+export default function ArweaveData(deps: Dependencies) {
   return {
     createData: createData.bind(null, deps),
     sign: sign.bind(null, deps),
