@@ -1,6 +1,12 @@
 
 import { JWKInterface } from "./interface-jwk";
 
+/**
+ * The Arweave-Js CryptoInterface. 
+ * 
+ * Only, 'sign', 'verify' and 'hash' methods are used.
+ * 
+ */
 export interface CryptoInterface {
   generateJWK(): Promise<JWKInterface>;
   sign(jwk: JWKInterface, data: Uint8Array): Promise<Uint8Array>;
