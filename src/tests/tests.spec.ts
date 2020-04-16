@@ -1,7 +1,7 @@
 
 import { expect } from 'chai';
 
-import { create, decodeData, ArDataApi  } from '../'
+import ArweaveData from '../'
 
 // Import deps from Arweave-Js
 import Arweave from 'arweave/node';
@@ -25,7 +25,7 @@ const deps = {
   deepHash: deepHash,
 }
 
-const Data = ArDataApi(deps);
+const Data = ArweaveData(deps);
 
 describe('Data API - basic', function() {
   it('should encode and decode string data', async function() {
