@@ -1,7 +1,7 @@
 import { Dependencies, DataItemJson, getSignatureData } from "./ar-data-base";
 
-export const MAX_TAG_KEY_LENGTH_BYTES = 512;
-export const MAX_TAG_VALUE_LENGTH_BYTES = 1024 * 2;
+export const MAX_TAG_KEY_LENGTH_BYTES = 1024 * 1;
+export const MAX_TAG_VALUE_LENGTH_BYTES = 1024 * 3;
 export const MAX_TAG_COUNT = 128;
 
 /**
@@ -26,14 +26,14 @@ export async function verify(deps: Dependencies, d: DataItemJson): Promise<boole
     const idOk = deps.utils.bufferTob64Url(idBytes) === d.id; 
 
     if (!idOk) {
-      return false; 
+      return false;
     }
 
     // Verify Signature is correct 
     const signatureOk = await deps.crypto.verify(d.owner, signatureData, signatureBytes);
 
     if (!signatureOk) {
-      return false; 
+      return false;
     }
 
     // Verify tags array is valid. 
