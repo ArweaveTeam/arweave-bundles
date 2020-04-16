@@ -6,7 +6,7 @@ import ArweaveData from '../'
 // Import deps from Arweave-Js
 import Arweave from 'arweave/node';
 import deepHash from 'arweave/node/lib/deepHash';
-import { readFileSync } from 'fs';
+import { readFileSync, fstat, writeFileSync } from 'fs';
 
 // Just used for some checks. 
 const _arweave = Arweave.init({ host: 'arweave.net', port: '443', protocol: 'https' });
@@ -191,6 +191,31 @@ describe('Data API - verification', function() {
     ).to.equal(false);
   })
 
+  describe('Data API - Bundling', function() {
+    it('should bundle a number of items', async function() {
+      const item0 = await Data.createData({ data: 'TESTSTRINGA', tags: TEST_TAGS, nonce: VALID_BASE64U }, wallet0);
+      const signed0 = await Data.sign(item0, wallet0);
+      const item1 = await Data.createData({ data: 'TESTSTRINGB', tags: TEST_TAGS, nonce: VALID_BASE64U }, wallet0);
+      const signed1 = await Data.sign(item0, wallet0);
+      const item2 = await Data.createData({ data: 'TESTSTRINGC', tags: TEST_TAGS, nonce: VALID_BASE64U }, wallet0);
+      const signed2 = await Data.sign(item0, wallet0);
+      const bundle = await Data.bundleData([signed0, signed1, signed2]);
+      expect(bundle.items).to.be.an.instanceOf(Array); 
+      //writeFileSync(__dirname + '/bundle0.json', JSON.stringify(bundle, undefined, 2));
+    })
+
+    it('should unbundle a number of items', async function() {
+      const json = readFileSync(__dirname + '/bundle0.json').toString();
+      const items = await Data.unbundleData(json);
+      expect(items.length).to.equal(3);
+    })
+
+    it('should unbundle and discard invalid items', async function() {
+      const json = readFileSync(__dirname + '/bundle1-invaliditem0.json').toString();
+      const items = await Data.unbundleData(json);
+      expect(items.length).to.equal(2);
+    })
+  })
 })
 
 
