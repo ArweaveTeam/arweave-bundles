@@ -1,9 +1,19 @@
 {
   "compilerOptions": {
-    "target": "es2019",                         
-    "module": "commonjs",                     
-    "strict": true,                    
-    "moduleResolution": "node",           
-    "esModuleInterop": true                  
-  }
+    "moduleResolution": "node",
+    "target": "ES5",
+    "module": "CommonJS",
+    "lib": ["esnext"],
+    "sourceMap": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "downlevelIteration": true,
+    "resolveJsonModule": true
+  },
+  "exclude": ["node_modules"],
+  "include": [
+    "src/**/*.ts",
+    "src/tests/**/*.{json,ts}"
+  ]
 }
