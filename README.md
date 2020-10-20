@@ -15,9 +15,9 @@ npm install arweave-bundles
 This is a self-contained library, so we need to initialize the API with a couple of dependencies:
 
 ```javascript
-import Arweave from 'arweave/node'
-import deepHash from 'arweave/node/lib/deepHash'
-import ArweaveBundles from 'arweave-bundles'
+import Arweave from 'arweave';
+import deepHash from 'arweave/node/lib/deepHash';
+import ArweaveBundles from 'arweave-bundles';
 
 const deps = {
   utils: Arweave.utils,
@@ -75,7 +75,7 @@ for (let i = 0; i < item.tags.length; i++) {
 const myTags = [
   { name: 'App-Name', value: 'myApp' },
   { name: 'App-Version', value: '1.0.0' }
-]
+];
 
 let item = await arBundles.createData({ to: 'awalleet', data: 'somemessage', tags: myTags }, wallet);
 
