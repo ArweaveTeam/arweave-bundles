@@ -4,6 +4,12 @@ This library contains routines to create, read, and verify Arweave bundled data.
 
 See [ANS-102](https://github.com/ArweaveTeam/arweave-standards/blob/master/ans/ANS-102.md) for more details.
 
+## Installing the library
+You need to first have NodeJS and NPM installed. Then you can run:
+```
+npm install arweave-bundles
+```
+
 ## Initializing the library
 
 This is a self-contained library, so we need to initialize the API with a couple of dependencies:
