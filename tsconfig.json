@@ -1,19 +1,12 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node",
-    "target": "ES5",
-    "module": "CommonJS",
-    "lib": ["esnext"],
-    "sourceMap": true,
+    "target": "es2015",
+    "module": "commonjs",
     "declaration": true,
+    "outDir": "./lib",
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "downlevelIteration": true,
-    "resolveJsonModule": true
+    "skipLibCheck": true
   },
-  "exclude": ["node_modules"],
-  "include": [
-    "src/**/*.ts",
-    "src/tests/**/*.{json,ts}"
-  ]
+  "include": ["src"],
+  "exclude": ["node_modules", "**/__tests__/*"]
 }

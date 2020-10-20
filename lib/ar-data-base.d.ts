@@ -1,6 +1,6 @@
-import { deepHash } from './interface-deep-hash';
-import { ArweaveUtils } from './interface-utils';
-import { CryptoInterface } from './interface-crypto';
+import { deepHash } from "./interface-deep-hash";
+import { ArweaveUtils } from "./interface-utils";
+import { CryptoInterface } from "./interface-crypto";
 /**
  * The depdencies needed for operating on DataItems
  * These methods and interfaces are all available in arweave-js

@@ -42,4 +42,4 @@ export declare function decodeTagAt(deps: Dependencies, d: DataItemJson, index: 
  * @param deps
  * @param d
  */
-export declare function unpackTags(deps: Dependencies, d: DataItemJson): Promise<Record<string, (string | string[])>>;
+export declare function unpackTags(deps: Dependencies, d: DataItemJson): Promise<Record<string, string | string[]>>;

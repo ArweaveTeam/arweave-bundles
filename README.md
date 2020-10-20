@@ -1,4 +1,4 @@
-# Arweave-Data (ANS-102)
+# Arweave-Bundles (ANS-102)
 
 This library contains routines to create, read, and verify Arweave bundled data.
 
@@ -11,7 +11,7 @@ This is a self-contained library, so we need to initialize the API with a couple
 ```javascript
 import Arweave from 'arweave/node'
 import deepHash from 'arweave/node/lib/deepHash'
-import ArweaveData from 'arweave-data'
+import ArweaveBundles from 'arweave-bundles'
 
 const deps = {
   utils: Arweave.utils,
@@ -19,7 +19,7 @@ const deps = {
   deepHash: deepHash,
 }
 
-const ArData = ArweaveData(deps);
+const arBundles = ArweaveBundles(deps);
 ```
 
 ## Unbundling from a Transaction containing DataItems
@@ -30,7 +30,7 @@ const txData = myTx.get('data', { decode: true, string: true });
 
 // Will extract and verify items, returning an array of valid 
 // DataItems.
-const items = await ArweaveData.unbundleData(txData);
+const items = await ArweaveBundles.unbundleData(txData);
 
 ```
 
@@ -41,9 +41,9 @@ const items = await ArweaveData.unbundleData(txData);
 const item = items[1]; // get a single item out of the array returned in the previous step.
 
 // get data as Uint8Array.
-const data = await ArData.decodeData(item, { string: false });
+const data = await arBundles.decodeData(item, { string: false });
 // get data as utf8 string.
-const data = await ArData.decodeData(item, { string: true });
+const data = await arBundles.decodeData(item, { string: true });
 
 // get id, owner, target, signature, nonce
 const id = item.id
@@ -54,7 +54,7 @@ const nonce = item.none
 
 
 for (let i = 0; i < item.tags.length; i++) {
-  const tag = await ArData.decodeTag(item.tag)
+  const tag = await arBundles.decodeTag(item.tag)
   // tag.name
   // tag.value
 }
@@ -71,14 +71,14 @@ const myTags = [
   { name: 'App-Version', value: '1.0.0' }
 ]
 
-let item = await ArData.createData({ to: 'awalleet', data: 'somemessage', tags: myTags }, wallet);
+let item = await arBundles.createData({ to: 'awalleet', data: 'somemessage', tags: myTags }, wallet);
 
 // Add some more tags after creation.
-ArData.addTag(item, 'MyTag', 'value1');
-ArData.addTag(item, 'MyTag', 'value2');
+arBundles.addTag(item, 'MyTag', 'value1');
+arBundles.addTag(item, 'MyTag', 'value2');
 
 // Sign the data, ready to be added to a bundle
-data = await ArData.sign(item, wallet);
+data = await arBundles.sign(item, wallet);
 
 ```
 
@@ -90,7 +90,7 @@ const items = await makeManyDataItems();
 
 // Will ensure all items are valid and have been signed,
 // throwing if any are not
-const myBundle = await ArData.bundleData(items);
+const myBundle = await arBundles.bundleData(items);
 
 const myTx = await arweave.createTransaction({ data: myBundle }, wallet);
 

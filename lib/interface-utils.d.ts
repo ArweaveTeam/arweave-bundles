@@ -18,7 +18,7 @@ export interface ArweaveUtils {
 /**
  * Encodes a javascript string to a UTF-8 byte array
  */
-export declare type stringToBuffer = (string: string) => Uint8Array;
+export declare type stringToBuffer = (str: string) => Uint8Array;
 /**
  * Decodes a UTF-8 encoded byte array to a javascript string.
  */
@@ -34,7 +34,7 @@ export declare type b64UrlToBuffer = (b64UrlString: string) => Uint8Array;
 /**
  * Encodes a string to a UTF-8 buffer and encodes that as base64url
  */
-export declare type stringToB64Url = (string: string) => string;
+export declare type stringToB64Url = (str: string) => string;
 /**
  * Decoded a base64url string as UTF-8 and then to a JavaScript string
  */
