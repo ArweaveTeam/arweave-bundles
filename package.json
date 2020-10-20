@@ -17,7 +17,7 @@
     "files": [
         "/lib/**/*"
     ],
-    "keywords": [],
+    "keywords": ["arweave", "ans-102", "bundled data"],
     "author": "ArweaveTeam <https://arweave.org>",
     "license": "MIT",
     "dependencies": {
