@@ -62,7 +62,7 @@ function unbundleData(deps, txData) {
                         txData = JSON.parse(txData);
                     }
                     if (typeof txData !== 'object' || !txData || !txData.items || !Array.isArray(txData.items)) {
-                        console.warn("Invalid bundle, should be a json string or obect with an items Array");
+                        console.warn("Invalid bundle, should be a json string or object with an items Array");
                         return [2 /*return*/, []];
                     }
                     itemsArray = txData.items;
@@ -71,7 +71,7 @@ function unbundleData(deps, txData) {
                     verifications = _a.sent();
                     failed = verifications.filter(function (v) { return !v; }).length;
                     if (failed > 0) {
-                        console.warn(failed + " peices of Data failed verification and will be discarded");
+                        console.warn(failed + " pieces of Data failed verification and will be discarded");
                         return [2 /*return*/, itemsArray.filter(function (x, idx) { return verifications[idx]; })];
                     }
                     return [2 /*return*/, itemsArray];

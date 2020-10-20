@@ -22,7 +22,7 @@ export async function unbundleData(deps: Dependencies, txData: any): Promise<Dat
   }
 
   if (typeof txData !== 'object' || !txData || !txData.items || !Array.isArray(txData.items)) {
-    console.warn(`Invalid bundle, should be a json string or obect with an items Array`)
+    console.warn(`Invalid bundle, should be a json string or object with an items Array`)
     return [];
   }
 
@@ -30,7 +30,7 @@ export async function unbundleData(deps: Dependencies, txData: any): Promise<Dat
   const verifications = await Promise.all(itemsArray.map(d => verify(deps, d)));
   const failed = verifications.filter(v => !v).length;
   if (failed > 0) {
-    console.warn(`${failed} peices of Data failed verification and will be discarded`);
+    console.warn(`${failed} pieces of Data failed verification and will be discarded`);
     return itemsArray.filter((x, idx) => verifications[idx]);
   }
   return itemsArray;

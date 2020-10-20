@@ -17,16 +17,37 @@ var ar_data_verify_1 = require("./ar-data-verify");
 Object.defineProperty(exports, "verify", { enumerable: true, get: function () { return ar_data_verify_1.verify; } });
 function ArweaveData(deps) {
     return {
-        createData: ar_data_create_1.createData.bind(null, deps),
-        sign: ar_data_create_1.sign.bind(null, deps),
-        addTag: ar_data_create_1.addTag.bind(null, deps),
-        verify: ar_data_verify_1.verify.bind(null, deps),
-        decodeData: ar_data_read_1.decodeData.bind(null, deps),
-        decodeTag: ar_data_read_1.decodeTag.bind(null, deps),
-        decodeTagAt: ar_data_read_1.decodeTagAt.bind(null, deps),
-        unpackTags: ar_data_read_1.unpackTags.bind(null, deps),
-        bundleData: ar_data_bundle_1.bundleData.bind(null, deps),
-        unbundleData: ar_data_bundle_1.unbundleData.bind(null, deps),
+        createData: function (opts, jwk) {
+            return ar_data_create_1.createData(deps, opts, jwk);
+        },
+        sign: function (d, jwk) {
+            return ar_data_create_1.sign(deps, d, jwk);
+        },
+        addTag: function (d, name, value) {
+            return ar_data_create_1.addTag(deps, d, name, value);
+        },
+        verify: function (d) {
+            return ar_data_verify_1.verify(deps, d);
+        },
+        decodeData: function (d, options) {
+            if (options === void 0) { options = { string: false }; }
+            return ar_data_read_1.decodeData(deps, d, options);
+        },
+        decodeTag: function (tag) {
+            return ar_data_read_1.decodeTag(deps, tag);
+        },
+        decodeTagAt: function (d, index) {
+            return ar_data_read_1.decodeTagAt(deps, d, index);
+        },
+        unpackTags: function (d) {
+            return ar_data_read_1.unpackTags(deps, d);
+        },
+        bundleData: function (txData) {
+            return ar_data_bundle_1.bundleData(deps, txData);
+        },
+        unbundleData: function (txData) {
+            return ar_data_bundle_1.unbundleData(deps, txData);
+        }
     };
 }
 exports.default = ArweaveData;
