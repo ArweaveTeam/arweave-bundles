@@ -680,10 +680,10 @@ array-unique@^0.3.2:
   resolved "https://registry.yarnpkg.com/array-unique/-/array-unique-0.3.2.tgz#a894b75d4bc4f6cd679ef3244a9fd8f46ae2d428"
   integrity sha1-qJS3XUvE9s1nnvMkSp/Y9Gri1Cg=
 
-arweave@^1.10.4:
-  version "1.10.4"
-  resolved "https://registry.yarnpkg.com/arweave/-/arweave-1.10.4.tgz#aaef62823eae5f13704539b652660f82627be673"
-  integrity sha512-SIPTuoKpk5sB7FbU2jHCgABoNBOtyjIHcvSdKycmYGEIvkOaKgyz8guftGrhwjGqxYfkXW1R0hqoIg0Y6zW6/A==
+arweave@^1.10.5:
+  version "1.10.5"
+  resolved "https://registry.yarnpkg.com/arweave/-/arweave-1.10.5.tgz#2f80e7a5d13e13c77d609d20ffad40f58e13d386"
+  integrity sha512-F2A9mkqY0lu/y19WEpcmXjiIRO6Sh7OvOfmCGT9Y7c8hs1VYMhzSWaDYhAzd4y3VT1AQUAcD8xFzmX3gC9gA7Q==
   dependencies:
     asn1.js "^5.4.1"
     axios "^0.21.1"
