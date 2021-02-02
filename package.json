@@ -1,6 +1,6 @@
 {
     "name": "arweave-bundles",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "This library contains routines to create, read, and verify Arweave bundled data.",
     "main": "lib/index.js",
     "scripts": {
