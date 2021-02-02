@@ -25,7 +25,7 @@
     "author": "ArweaveTeam <https://arweave.org>",
     "license": "MIT",
     "dependencies": {
-        "arweave": "^1.10.3"
+        "arweave": "^1.10.4"
     },
     "devDependencies": {
         "@types/jest": "^26.0.20",
