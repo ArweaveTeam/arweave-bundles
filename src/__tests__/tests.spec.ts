@@ -212,4 +212,74 @@ describe("Data API - verification", function () {
       expect(items.length).toBe(2);
     });
   });
+
+  describe("Data API - Bundling with SignatureType", function () {
+    it("should bundle a number of items", async function () {
+      const item0 = await Data.createData(
+        {
+          data: "TESTSTRINGA",
+          tags: TEST_TAGS,
+          nonce: VALID_BASE64U,
+          signatureType: 1,
+        },
+        wallet0
+      );
+      const signed0 = await Data.sign(item0, wallet0);
+      const item1 = await Data.createData(
+        {
+          data: "TESTSTRINGB",
+          tags: TEST_TAGS,
+          nonce: VALID_BASE64U,
+          signatureType: 1,
+        },
+        wallet0
+      );
+      const signed1 = await Data.sign(item0, wallet0);
+      const item2 = await Data.createData(
+        {
+          data: "TESTSTRINGC",
+          tags: TEST_TAGS,
+          nonce: VALID_BASE64U,
+          signatureType: 1,
+        },
+        wallet0
+      );
+      const signed2 = await Data.sign(item0, wallet0);
+      const bundle = await Data.bundleData([signed0, signed1, signed2]);
+      expect(bundle.items).toBeInstanceOf(Array);
+      //writeFileSync(__dirname + '/bundle0.json', JSON.stringify(bundle, undefined, 2));
+    });
+
+    it("should unbundle a number of items", async function () {
+      const json = readFileSync(
+        path.join(__dirname, "bundle_sig_multiple.json")
+      ).toString();
+      const items = await Data.unbundleData(json);
+      expect(items.length).toBe(3);
+    });
+
+    it("should unbundle a bundle with sig type", async function () {
+      const json = readFileSync(
+        path.join(__dirname, "bundle_sig_type.json")
+      ).toString();
+      const items = await Data.unbundleData(json);
+      expect(items.length).toBe(1);
+    });
+
+    it("should unbundle a bundle with sig type and tags", async function () {
+      const json = readFileSync(
+        path.join(__dirname, "bundle_sig_type_tags.json")
+      ).toString();
+      const items = await Data.unbundleData(json);
+      expect(items.length).toBe(1);
+    });
+
+    it("should unbundle and discard invalid items", async function () {
+      const json = readFileSync(
+        path.join(__dirname, "/bundle_sig_multiple_invaliditem0.json")
+      ).toString();
+      const items = await Data.unbundleData(json);
+      expect(items.length).toBe(2);
+    });
+  });
 });
