@@ -15,6 +15,7 @@ export interface DataItemCreateOptions {
   target?: string;
   nonce?: string;
   tags?: { name: string; value: string }[];
+  signatureType?: number;
 }
 
 /**
@@ -46,6 +47,7 @@ export async function createData(
         : deps.utils.bufferTob64Url(opts.data),
     signature: "",
     id: "",
+    signatureType: opts.signatureType || 1,
   };
 
   if (!verifyEncodedTagsArray(deps, d.tags)) {

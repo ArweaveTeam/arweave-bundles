@@ -11,6 +11,7 @@ export interface DataItemCreateOptions {
         name: string;
         value: string;
     }[];
+    signatureType?: number;
 }
 /**
  * Create a DataItem, encoding tags and data, setting owner, but not

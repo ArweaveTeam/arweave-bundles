@@ -23,6 +23,7 @@ export declare class DataItemJson {
     }[];
     data: string;
     signature: string;
+    signatureType: number;
     id: string;
 }
 /**
