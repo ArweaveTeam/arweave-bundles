@@ -1,6 +1,6 @@
 # Arweave-Bundles (ANS-102)
 
-**NOTE:** This package uses the older (ANS-102) standard. Check out [ArBundles](https://github.com/Bundler-Network/arbundles) for the new one (ANS-104). This version includes a more efficient indexing and encoding system.
+**NOTE:** This package uses the older (ANS-102) standard. Check out [@DHA-Team/ArBundles](https://github.com/dha-team/arbundles) for the new one (ANS-104). This version includes a more efficient indexing and encoding system.
 
 This library contains routines to create, read, and verify Arweave bundled data.
 
